@@ -1,0 +1,20 @@
+version: "3.4"
+services: 
+    vuenew: 
+        image: tonmorakot/vuenew:latest
+        ports: 
+            - "80:80"
+            - "443:443"
+        restart: always
+    tpnapi:
+        image: tonmorakot/tpnapi:latest
+        ports:
+            - "3000:3000"
+        restart: always
+        depends_on: 
+            - "mongo"
+    mongo: 
+        image: "mongo"
+        ports:
+            - "27017:27017"
+        restart: always
